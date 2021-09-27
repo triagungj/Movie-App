@@ -12,18 +12,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late Future<List<Movie>> futureMovie;
+  late Future<Movies> futureMovie;
 
-  Future<List<Movie>> fetchMovie() async {
+  Future<Movies> fetchMovie() async {
     final response = await http.get(Uri.parse(
         'https://api.themoviedb.org/4/list/1?page=1&api_key=937dad13a793012eda640fc7394d471c'));
 
     if (response.statusCode == 200) {
-      var _movie = jsonDecode(response.body)['results'] as List;
-      List<Movie> listMovies =
-          _movie.map((_movie) => Movie.fromJson(_movie)).toList();
-
-      return listMovies;
+      return Movies.fromJson(jsonDecode(response.body));
     } else {
       throw Exception('Failed to load movie');
     }
@@ -38,67 +34,78 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Movie API")),
         body: SafeArea(
             child: Center(
-          child: FutureBuilder<List<Movie>>(
-            future: futureMovie,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return ListView.builder(
-                    itemBuilder: (context, index) {
-                      final Movie movie = snapshot.data![index];
-                      return InkWell(
-                        onTap: () {
-                          // Navigator.push(context,
-                          //     MaterialPageRoute(builder: (context) {
-                          //   return DetailScreen(place: place);
-                          // }));
-                        },
-                        child: Card(
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Expanded(
-                                flex: 3,
-                                child: Center(
-                                    child: Image.network(
-                                        "https://image.tmdb.org/t/p/w500/" +
-                                            movie.poster)),
-                              ),
-                              Expanded(
-                                flex: 10,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      Text(
-                                        movie.title,
-                                        style: TextStyle(fontSize: 16.0),
-                                      ),
-                                      const SizedBox(
-                                        height: 18,
-                                      ),
-                                      Text(movie.released),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
+      child: FutureBuilder<Movies>(
+        future: futureMovie,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+                itemBuilder: (context, index) {
+                  final Movie movie = snapshot.data!.listMovies[index];
+                  return InkWell(
+                    onTap: () {
+                      // Navigator.push(context,
+                      //     MaterialPageRoute(builder: (context) {
+                      //   return DetailScreen(place: place);
+                      // }));
                     },
-                    itemCount: snapshot.data!.length);
-              } else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
-              }
-              return const CircularProgressIndicator();
-            },
-          ),
-        )));
+                    child: Card(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Expanded(
+                            flex: 3,
+                            child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(17),
+                                ),
+                                padding: const EdgeInsets.all(8.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: Image.network(
+                                    "https://image.tmdb.org/t/p/w500/" +
+                                        movie.posterPath,
+                                  ),
+                                )),
+                          ),
+                          Expanded(
+                            flex: 10,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Text(
+                                    movie.title,
+                                    style: TextStyle(fontSize: 16.0),
+                                  ),
+                                  const SizedBox(
+                                    height: 8,
+                                  ),
+                                  Text(
+                                    movie.overview,
+                                    maxLines: 3,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+                itemCount: snapshot.data!.listMovies.length);
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error}');
+          }
+          return const CircularProgressIndicator();
+        },
+      ),
+    )));
   }
 }
