@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:project_latihan/constrants.dart';
 import 'package:project_latihan/pages/login/login_page.dart';
 
 void main() {
@@ -14,9 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Project Latihan Flutter',
-      theme: ThemeData(
-          primaryColor: cPrimaryColor,
-          scaffoldBackgroundColor: cPrimaryLightColor),
+      theme: ThemeData(brightness: Brightness.dark),
       home: const LoginPage(),
     );
   }

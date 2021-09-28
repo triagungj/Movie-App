@@ -100,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Container(
                         width: double.infinity,
                         decoration: const BoxDecoration(
-                            color: Colors.white,
+                            color: Colors.black45,
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(40),
                                 topRight: Radius.circular(40))),
@@ -112,17 +112,20 @@ class _LoginPageState extends State<LoginPage> {
                             children: [
                               TextFormField(
                                 keyboardType: TextInputType.name,
+                                style: TextStyle(color: Colors.black),
                                 decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(8.0),
                                       borderSide: BorderSide.none,
                                     ),
                                     filled: true,
-                                    fillColor: const Color(0xFFe7edeb),
+                                    fillColor: const Color(0xFFcfbec2),
                                     hintText: "Username",
+                                    hintStyle:
+                                        TextStyle(color: Color(0xFF7d7d7d)),
                                     prefixIcon: const Icon(
                                       Icons.account_box,
-                                      color: Colors.grey,
+                                      color: Color(0xFF000000),
                                     )),
                                 validator: (value) {
                                   if (value!.isEmpty) {
@@ -136,6 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               const SizedBox(height: 12),
                               TextFormField(
+                                style: const TextStyle(color: Colors.black),
                                 obscureText: true,
                                 decoration: InputDecoration(
                                     border: OutlineInputBorder(
@@ -143,11 +147,13 @@ class _LoginPageState extends State<LoginPage> {
                                       borderSide: BorderSide.none,
                                     ),
                                     filled: true,
-                                    fillColor: const Color(0xFFe7edeb),
+                                    fillColor: const Color(0xFFcfbec2),
                                     hintText: "Password",
+                                    hintStyle: const TextStyle(
+                                        color: Color(0xFF7d7d7d)),
                                     prefixIcon: const Icon(
                                       Icons.password,
-                                      color: Colors.grey,
+                                      color: Color(0xFF000000),
                                     )),
                                 validator: (value) {
                                   if (value!.isEmpty) {
@@ -171,10 +177,8 @@ class _LoginPageState extends State<LoginPage> {
                                     }
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    primary:
-                                        const Color(0xffee0000), // background
-                                    onPrimary:
-                                        const Color(0xff0d0e1a), // foreground
+                                    primary: const Color(0xffee0000),
+                                    onPrimary: const Color(0xff0d0e1a),
                                   ),
                                   child: const Text("Log In",
                                       style: TextStyle(
@@ -183,11 +187,13 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               const SizedBox(height: 12),
                               const Text(
-                                  "Forgot your login details? Click link below"),
+                                "Forgot your login details? Click link below",
+                                style: TextStyle(color: Colors.white),
+                              ),
                               const Text("Forgot Password",
                                   style: TextStyle(
                                       decoration: TextDecoration.underline,
-                                      color: Colors.blue))
+                                      color: Colors.white54))
                             ],
                           ),
                         ),

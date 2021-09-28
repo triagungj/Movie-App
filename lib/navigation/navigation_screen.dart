@@ -26,6 +26,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
     return Scaffold(
         body: _children[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.black12,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
                 icon: _selectedIndex == 0
@@ -40,7 +41,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
                         'assets/icons/account_circle_black_24dp_filled.svg')
                     : SvgPicture.asset(
                         'assets/icons/account_circle_black_24dp_outline.svg'),
-                label: 'Home'),
+                label: 'Account'),
           ],
           currentIndex: _selectedIndex,
           // selectedItemColor: mTitleColor,
