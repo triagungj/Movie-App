@@ -40,14 +40,24 @@ class Movie {
 class Movies {
   late List<Movie> listMovies;
 
-  Movies(this.listMovies);
-
   Movies.fromJson(Map<String, dynamic> json) {
     if (json['results'] != null) {
       listMovies = [];
       json['results'].forEach((v) {
         listMovies.add(Movie.fromJson(v));
       });
+    } else {
+      listMovies.add(Movie(
+          id: 123,
+          originalLanguage: "Dummy",
+          originalTitle: "Dummy",
+          overview: "Dummy",
+          popularity: 123,
+          posterPath: "Dummy",
+          releaseDate: "Dummy",
+          title: "Dummy",
+          voteAverage: 123,
+          voteCount: 123));
     }
   }
 }
