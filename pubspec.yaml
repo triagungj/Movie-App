@@ -87,9 +87,18 @@ flutter:
         - asset: fonts/Cardo/Cardo-Bold.ttf
         - asset: fonts/Cardo/Cardo-Italic.ttf
           style: italic
+    - family: Oxygen
+      fonts:
+        - asset: fonts/Oxygen/Oxygen-Regular.ttf
+        - asset: fonts/Oxygen/Oxygen-Bold.ttf
+        - asset: fonts/Oxygen/Oxygen-Light.ttf
+          style: italic
     - family: Anton
       fonts:
         - asset: fonts/Anton/Anton-Regular.ttf
+    - family: Staatliches
+      fonts:
+        - asset: fonts/Staatliches/Staatliches-Regular.ttf
     
   #   - family: Trajan Pro
   #     fonts:

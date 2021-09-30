@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:project_latihan/pages/menu/account_page.dart';
-import 'package:project_latihan/pages/menu/home_page.dart';
+import 'package:project_latihan/pages/account/account_page.dart';
+import 'package:project_latihan/pages/home/home_page.dart';
 
 class NavigationScreen extends StatefulWidget {
   const NavigationScreen({Key? key}) : super(key: key);
@@ -31,16 +31,24 @@ class _NavigationScreenState extends State<NavigationScreen> {
             BottomNavigationBarItem(
                 icon: _selectedIndex == 0
                     ? SvgPicture.asset(
-                        'assets/icons/home_black_24dp_filled.svg')
+                        'assets/icons/home_black_24dp_filled.svg',
+                        color: Colors.white,
+                      )
                     : SvgPicture.asset(
-                        'assets/icons/home_black_24dp_outline.svg'),
+                        'assets/icons/home_black_24dp_outline.svg',
+                        color: Colors.grey,
+                      ),
                 label: 'Home'),
             BottomNavigationBarItem(
                 icon: _selectedIndex == 1
                     ? SvgPicture.asset(
-                        'assets/icons/account_circle_black_24dp_filled.svg')
+                        'assets/icons/account_circle_black_24dp_filled.svg',
+                        color: Colors.white,
+                      )
                     : SvgPicture.asset(
-                        'assets/icons/account_circle_black_24dp_outline.svg'),
+                        'assets/icons/account_circle_black_24dp_outline.svg',
+                        color: Colors.grey,
+                      ),
                 label: 'Account'),
           ],
           currentIndex: _selectedIndex,
