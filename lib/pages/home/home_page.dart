@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:project_latihan/model/movie.dart';
+import 'package:project_latihan/pages/detail/detail_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -153,10 +153,10 @@ class _HomePageState extends State<HomePage> {
                                     snapshot.data!.listMovies[index];
                                 return InkWell(
                                   onTap: () {
-                                    // Navigator.push(context,
-                                    //     MaterialPageRoute(builder: (context) {
-                                    //   return DetailScreen(place: place);
-                                    // }));
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return DetailScreen(movieId: movie.id);
+                                    }));
                                   },
                                   child: Card(
                                     child: Container(

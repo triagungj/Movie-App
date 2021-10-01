@@ -39,6 +39,7 @@ dependencies:
   http: ^0.13.3
   pull_to_refresh: ^2.0.0
   substring_highlight: ^1.0.33
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:

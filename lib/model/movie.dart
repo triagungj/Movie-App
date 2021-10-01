@@ -39,8 +39,10 @@ class Movie {
 
 class Movies {
   late List<Movie> listMovies;
+  late int totalResults;
 
   Movies.fromJson(Map<String, dynamic> json) {
+    totalResults = json['total_results'];
     if (json['results'] != null) {
       listMovies = [];
       json['results'].forEach((v) {
