@@ -51,11 +51,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              colors: <Color>[Color(0xff750404), Color(0xff000000)],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(colors: <Color>[
+            Theme.of(context).colorScheme.secondaryVariant,
+            Theme.of(context).colorScheme.primaryVariant
+          ], begin: Alignment.centerLeft, end: Alignment.bottomRight),
         ),
         child: Center(
           child: FutureBuilder<Movies>(
@@ -70,7 +70,6 @@ class _HomePageState extends State<HomePage> {
                               pinned: false,
                               snap: true,
                               floating: true,
-                              // expandedHeight: 120,
                               flexibleSpace: const FlexibleSpaceBar(
                                 title: Text(
                                   'M O V I E',
@@ -79,9 +78,7 @@ class _HomePageState extends State<HomePage> {
                                     fontFamily: 'Staatliches',
                                   ),
                                 ),
-                                // background: FlutterLogo(),
                               ),
-                              backgroundColor: const Color(0xff750404),
                               centerTitle: true,
                               leading: const Icon(
                                 Icons.menu,
@@ -101,46 +98,41 @@ class _HomePageState extends State<HomePage> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const Text("Watch A Movie",
-                                          style: TextStyle(
-                                              fontSize: 24,
-                                              fontWeight: FontWeight.normal,
-                                              fontFamily: 'Oxygen')),
+                                      Text("Watch A Movie",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline4),
                                       const SizedBox(height: 12),
                                       Row(
                                         children: [
                                           Expanded(
                                             flex: 7,
                                             child: TextFormField(
-                                              decoration: const InputDecoration(
+                                              decoration: InputDecoration(
                                                   prefixIcon: Icon(
                                                     Icons.search,
-                                                    color: Color(0xffffffff),
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .onPrimary,
                                                   ),
                                                   focusedBorder:
-                                                      UnderlineInputBorder(
+                                                      const UnderlineInputBorder(
                                                     borderSide: BorderSide(
                                                       color: Color(0xffffffff),
                                                     ),
                                                   ),
-                                                  hintText: 'Search'),
+                                                  hintText: 'Search Movie'),
                                             ),
                                           ),
                                           const SizedBox(width: 20),
                                           Expanded(
                                             flex: 3,
                                             child: ElevatedButton(
-                                                onPressed: () {},
-                                                child: const Text(
-                                                  'Search',
-                                                ),
-                                                style: ButtonStyle(
-                                                  backgroundColor:
-                                                      MaterialStateProperty.all<
-                                                              Color>(
-                                                          const Color(
-                                                              0xff750404)),
-                                                )),
+                                              onPressed: () {},
+                                              child: const Text(
+                                                'Search',
+                                              ),
+                                            ),
                                           )
                                         ],
                                       )
@@ -162,7 +154,8 @@ class _HomePageState extends State<HomePage> {
                                     child: Container(
                                       padding: const EdgeInsets.fromLTRB(
                                           16, 12, 16, 12),
-                                      color: const Color(0xFF451d1d),
+                                      color:
+                                          Theme.of(context).colorScheme.surface,
                                       child: Row(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
@@ -238,9 +231,9 @@ class _HomePageState extends State<HomePage> {
                                                     height: 16,
                                                   ),
                                                   Text(movie.title,
-                                                      style: const TextStyle(
-                                                          fontSize: 18.0,
-                                                          fontFamily: 'Anton')),
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .headline2),
                                                   const SizedBox(
                                                     height: 16,
                                                   ),

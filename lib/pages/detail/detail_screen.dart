@@ -92,18 +92,16 @@ class _DetailScreenState extends State<DetailScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(movie.originalTitle,
-                                          style: const TextStyle(
-                                              fontFamily: 'Staatliches',
-                                              fontSize: 32)),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline1),
                                       const SizedBox(height: 12),
                                       RichText(
                                         textAlign: TextAlign.center,
                                         text: TextSpan(
-                                            style: const TextStyle(
-                                              color: Color(0XFFc9c5c5),
-                                              fontFamily: 'Oxygen',
-                                              fontSize: 14,
-                                            ),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .caption,
                                             children: [
                                               TextSpan(
                                                   text: newFormat + "  |  "),
@@ -132,10 +130,9 @@ class _DetailScreenState extends State<DetailScreen> {
                                             fontSize: 18,
                                           )),
                                       Text(movie.overview,
-                                          style: const TextStyle(
-                                              fontFamily: 'Oxygen',
-                                              fontSize: 14,
-                                              color: Color(0XFFc9c5c5))),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .caption),
                                     ],
                                   )),
                               Padding(
@@ -150,19 +147,18 @@ class _DetailScreenState extends State<DetailScreen> {
                                                 const Color(0xff750404)),
                                       ),
                                       onPressed: () {},
-                                      child: const Text('Watch Movie',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontFamily: 'Anton',
-                                          ))))
+                                      child: Text('Watch Movie',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline3)))
                             ]),
                       ),
                     );
                   } else if (snapshot.hasError) {
                     return Text('${snapshot.error}');
                   }
-                  return const CircularProgressIndicator(
-                    color: Color(0xFFdedede),
+                  return const Center(
+                    child: CircularProgressIndicator(),
                   );
                 }),
           ),

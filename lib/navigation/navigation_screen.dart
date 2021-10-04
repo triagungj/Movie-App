@@ -26,44 +26,43 @@ class _NavigationScreenState extends State<NavigationScreen> {
     return Scaffold(
         body: _children[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.black12,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                icon: _selectedIndex == 0
-                    ? SvgPicture.asset(
-                        'assets/icons/home_black_24dp_filled.svg',
-                        color: Colors.white,
-                      )
-                    : SvgPicture.asset(
-                        'assets/icons/home_black_24dp_outline.svg',
-                        color: Colors.grey,
-                      ),
-                label: 'Home'),
-            BottomNavigationBarItem(
-                icon: _selectedIndex == 1
-                    ? SvgPicture.asset(
-                        'assets/icons/account_circle_black_24dp_filled.svg',
-                        color: Colors.white,
-                      )
-                    : SvgPicture.asset(
-                        'assets/icons/account_circle_black_24dp_outline.svg',
-                        color: Colors.grey,
-                      ),
-                label: 'Account'),
-          ],
-          currentIndex: _selectedIndex,
-          // selectedItemColor: mTitleColor,
-          // unselectedItemColor: mSubtitleColor,
-          onTap: _onItemTapped,
-          // backgroundColor: Colors.transparent,
-          type: BottomNavigationBarType.fixed,
-          selectedFontSize: 12,
-          unselectedFontSize: 10,
-          selectedLabelStyle: const TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-          showUnselectedLabels: true,
-          // elevation: 0
-        ));
+            backgroundColor: Colors.black12,
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                  icon: _selectedIndex == 0
+                      ? SvgPicture.asset(
+                          'assets/icons/home_black_24dp_filled.svg',
+                          color: Colors.white,
+                        )
+                      : SvgPicture.asset(
+                          'assets/icons/home_black_24dp_outline.svg',
+                          color: Colors.grey,
+                        ),
+                  label: 'Home'),
+              BottomNavigationBarItem(
+                  icon: _selectedIndex == 1
+                      ? SvgPicture.asset(
+                          'assets/icons/account_circle_black_24dp_filled.svg',
+                          color: Colors.white,
+                        )
+                      : SvgPicture.asset(
+                          'assets/icons/account_circle_black_24dp_outline.svg',
+                          color: Colors.grey,
+                        ),
+                  label: 'Account'),
+            ],
+            currentIndex: _selectedIndex,
+            // selectedItemColor: mTitleColor,
+            // unselectedItemColor: mSubtitleColor,
+            onTap: _onItemTapped,
+            // backgroundColor: Colors.transparent,
+            type: BottomNavigationBarType.fixed,
+            selectedFontSize: 12,
+            unselectedFontSize: 10,
+            selectedLabelStyle: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+            showUnselectedLabels: true,
+            elevation: 0));
   }
 }

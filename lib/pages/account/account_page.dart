@@ -28,17 +28,20 @@ class _AccountPageState extends State<AccountPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text("This is Account Page"),
-              TextButton(
-                  onPressed: () {
-                    _getLogout();
-                  },
-                  child: const Text("Logout"))
-            ],
+        child: Container(
+          color: Theme.of(context).primaryColor,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text("This is Account Page"),
+                ElevatedButton(
+                    onPressed: () {
+                      _getLogout();
+                    },
+                    child: const Text("Logout"))
+              ],
+            ),
           ),
         ),
       ),

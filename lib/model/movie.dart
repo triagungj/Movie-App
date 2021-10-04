@@ -3,12 +3,12 @@ class Movie {
   late String originalLanguage;
   late String originalTitle;
   late String overview;
-  late double popularity;
+  late num popularity;
   late String posterPath;
   late String releaseDate;
   late String title;
-  late double voteAverage;
-  late int voteCount;
+  late num voteAverage;
+  late num voteCount;
 
   Movie({
     required this.id,
@@ -32,8 +32,8 @@ class Movie {
     posterPath = json['poster_path'];
     releaseDate = json['release_date'];
     title = json['title'];
-    voteAverage = json['vote_average'].toDouble();
-    voteCount = json['vote_count'] as int;
+    voteAverage = json['vote_average'];
+    voteCount = json['vote_count'];
   }
 }
 

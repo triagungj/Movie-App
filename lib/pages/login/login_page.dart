@@ -56,11 +56,11 @@ class _LoginPageState extends State<LoginPage> {
             constraints: BoxConstraints(
                 maxHeight: MediaQuery.of(context).size.height,
                 maxWidth: MediaQuery.of(context).size.width),
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  colors: <Color>[Color(0xffee0000), Color(0xff0d0e1a)],
-                  begin: Alignment.topRight,
-                  end: Alignment.topLeft),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(colors: <Color>[
+                Theme.of(context).colorScheme.secondaryVariant,
+                Theme.of(context).colorScheme.primaryVariant
+              ], begin: Alignment.topRight, end: Alignment.topLeft),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -112,14 +112,17 @@ class _LoginPageState extends State<LoginPage> {
                             children: [
                               TextFormField(
                                 keyboardType: TextInputType.name,
-                                style: TextStyle(color: Colors.black),
+                                style: TextStyle(
+                                    color: Theme.of(context).primaryColor),
+                                cursorColor: Theme.of(context).primaryColor,
                                 decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(8.0),
                                       borderSide: BorderSide.none,
                                     ),
                                     filled: true,
-                                    fillColor: const Color(0xFFcfbec2),
+                                    fillColor:
+                                        Theme.of(context).colorScheme.onPrimary,
                                     hintText: "Username",
                                     hintStyle:
                                         TextStyle(color: Color(0xFF7d7d7d)),
@@ -139,15 +142,18 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               const SizedBox(height: 12),
                               TextFormField(
-                                style: const TextStyle(color: Colors.black),
                                 obscureText: true,
+                                style: TextStyle(
+                                    color: Theme.of(context).primaryColor),
+                                cursorColor: Theme.of(context).primaryColor,
                                 decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(8.0),
                                       borderSide: BorderSide.none,
                                     ),
                                     filled: true,
-                                    fillColor: const Color(0xFFcfbec2),
+                                    fillColor:
+                                        Theme.of(context).colorScheme.onPrimary,
                                     hintText: "Password",
                                     hintStyle: const TextStyle(
                                         color: Color(0xFF7d7d7d)),
@@ -176,13 +182,8 @@ class _LoginPageState extends State<LoginPage> {
                                       _getLogin();
                                     }
                                   },
-                                  style: ElevatedButton.styleFrom(
-                                    primary: const Color(0xffee0000),
-                                    onPrimary: const Color(0xff0d0e1a),
-                                  ),
                                   child: const Text("Log In",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 18)),
+                                      style: TextStyle(fontSize: 18)),
                                 ),
                               ),
                               const SizedBox(height: 12),
